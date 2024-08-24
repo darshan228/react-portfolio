@@ -1,7 +1,6 @@
 import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "./utils/Themes";
-import { useState } from "react";
+import { darkTheme} from "./utils/Themes";
 import Navbar from "./components/Navbar";
 import Intro from "./components/IntroSection";
 import Education from "./components/Education";
@@ -35,9 +34,8 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={ darkTheme }>
       <Router>
         <Navbar />
         <Body>
