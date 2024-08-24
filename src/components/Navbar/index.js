@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styled, { useTheme } from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { HiOutlineCode } from "react-icons/hi";
+import { MdCancel } from "react-icons/md";
+import styled, { useTheme } from "styled-components";
 import { Details } from "../../data/Constants";
 
 const Nav = styled.div`
@@ -158,6 +159,8 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
 
+  const toggleNavbar = () => setOpen(!open);
+
   return (
     <Nav>
       <Navcontainer>
@@ -167,11 +170,7 @@ function Navbar() {
           <HiOutlineCode size="3rem" style={{ color: "#854CE6" }} />
         </NavLogo>
         <MobileIcon>
-          <FaBars
-            onClick={() => {
-              setOpen(!open);
-            }}
-          />
+          <FaBars onClick={toggleNavbar} />
         </MobileIcon>
         <NavItems>
           <NavLink href="#about">About</NavLink>
@@ -189,52 +188,25 @@ function Navbar() {
 
         {open && (
           <MobileMenu open={open}>
-            <MobileMenuLinks
-              href="#about"
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
+            <MobileIcon>
+              <MdCancel onClick={toggleNavbar} />
+            </MobileIcon>
+            <MobileMenuLinks href="#about" onClick={toggleNavbar}>
               About
             </MobileMenuLinks>
-            <MobileMenuLinks
-              href="#skills"
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
+            <MobileMenuLinks href="#skills" onClick={toggleNavbar}>
               Skills
             </MobileMenuLinks>
-            <MobileMenuLinks
-              href="#experience"
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
+            <MobileMenuLinks href="#experience" onClick={toggleNavbar}>
               Experience
             </MobileMenuLinks>
-            <MobileMenuLinks
-              href="#projects"
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
+            <MobileMenuLinks href="#projects" onClick={toggleNavbar}>
               Projects
             </MobileMenuLinks>
-            <MobileMenuLinks
-              href="#education"
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
+            <MobileMenuLinks href="#education" onClick={toggleNavbar}>
               Education
             </MobileMenuLinks>
-            <MobileMenuLinks
-              href="#contact"
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
+            <MobileMenuLinks href="#contact" onClick={toggleNavbar}>
               Contact
             </MobileMenuLinks>
             <GithubButton
@@ -246,6 +218,7 @@ function Navbar() {
               }}
               href={Details.github}
               target="_blank"
+              onClick={toggleNavbar}
             >
               Github Profile
             </GithubButton>
